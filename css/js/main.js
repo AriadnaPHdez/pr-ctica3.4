@@ -156,21 +156,19 @@ console.log(red,green,blue);
 
 borderColor.oninput = function(e){
     taReview.style.borderColor = borderColor.value;
-    hex = borderColor.value;
-    
+    for(let i=0;i<btnStyle.length;i++){
+        btnStyle[i].style.borderColor = borderColor.value;
+    }
 }
 
 
 /* Manejar la trasparencia del borde */
 alphaBorder.oninput = function(e) {
     
-    var red = parseInt(hex[1]+hex[2],16);
-    var green = parseInt(hex[3]+hex[4],16);
-    var blue = parseInt(hex[5]+hex[6],16);
-   // alert(widthBorder.value + "px " + tip  + " rgba("+red+", "+green+", "+blue+", "+ (alphaBorder.value/100)+");");
-     
-     taReview.style.border= widthBorder.value + "px " + tip  + " rgba("+red+", "+green+", "+blue+", "+ (alphaBorder.value/100)+")";
-
+    var hex = borderColor.value;
+    /* var rgba = "rgba("+parseInt(hex[1]+hex[2],16)+","+parseInt(hex[3]+hex[4],16)+","+parseInt(hex[5]+hex[6],16)+","+alphaBorder.value+")";
+    taReview.style.borderColor = rgba; */
+    taReview.style.borderColor = `rgba(${parseInt(hex[1]+hex[2],16)},${parseInt(hex[3]+hex[4],16)},${parseInt(hex[5]+hex[6],16)},${alphaBorder.value})`;
     }
 
 borderColorOpacity.onclick=function(e){
@@ -181,31 +179,34 @@ borderColorOpacity.onclick=function(e){
 /* Define el posicionamiento del borde */
 
 borderTop.onclick = function(e){
-    txtArea.style.borderTop=input1.value+"px "+estiloAlmacenado+" rgba("+(inputCP.value).colorRGB()+", "+valorColor.value+")";
-	txtArea.style.borderBottom="none";
-	txtArea.style.borderLeft="none";
-	txtArea.style.borderRight="none";
-     
+    taReview.style.borderRight='none';
+        taReview.style.borderBottom='none';
+        taReview.style.borderLeft='none';
+        taReview.style.borderTop='solid'+borderColor.value;
  };
  borderRight.onclick = function(e){
-    txtArea.style.borderTop="none";
-	txtArea.style.borderBottom="none";
-	txtArea.style.borderLeft="none";
-	txtArea.style.borderRight=input1.value+"px "+estiloAlmacenado+" rgba("+(inputCP.value).colorRGB()+", "+valorColor.value+")";
+    taReview.style.borderTop='none';
+    taReview.style.borderBottom='none';
+    taReview.style.borderLeft='none';
+    taReview.style.borderRight='solid'+borderColor.value;
  };
  borderBottom.onclick = function(e){
-    txtArea.style.borderTop="none";
-	txtArea.style.borderBottom=input1.value+"px "+estiloAlmacenado+" rgba("+(inputCP.value).colorRGB()+", "+valorColor.value+")";
-	txtArea.style.borderLeft="none";
-	txtArea.style.borderRight="none";
+    taReview.style.borderTop='none';
+    taReview.style.borderRight='none';
+    taReview.style.borderLeft='none';
+    taReview.style.borderBottom='solid'+borderColor.value;
      
  };
  borderLeft.onclick = function(e){
-    txtArea.style.borderTop="none";
-	txtArea.style.borderBottom="none";
-	txtArea.style.borderLeft=input1.value+"px "+estiloAlmacenado+" rgba("+(inputCP.value).colorRGB()+", "+valorColor.value+")";
-	txtArea.style.borderRight="none";
+    taReview.style.borderTop='none';
+    taReview.style.borderRight='none';
+    taReview.style.borderBottom='none';
+    taReview.style.borderLeft='solid'+borderColor.value;
  };
  borderall.onclick = function(e){
-    txtArea.style.border=input1.value+"px "+estiloAlmacenado+" rgba("+(inputCP.value).colorRGB()+", "+valorColor.value+")";
+
+    taReview.style.borderLeft='solid'+borderColor.value;
+    taReview.style.borderBottom='solid'+borderColor.value;
+    taReview.style.borderRight='solid'+borderColor.value;
+    taReview.style.borderTop='solid'+borderColor.value;
  };
